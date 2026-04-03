@@ -1,0 +1,134 @@
+# JVM, JRE, JDK & Java Editions
+
+## Hierarchy of Java Components
+The relationship between JVM, JRE, and JDK:
+JVM ⊂ JRE ⊂ JDK
+
+## Compiler vs Interpreter
+### Compiler
+- Converts entire source code into machine code at once.
+- Output is a standalone executable.
+- Example: C, C++
+
+### Interpreter
+- Converts source code into machine code line by line during execution.
+- Slower than compiled languages.
+- Example: Python
+
+### Java: Hybrid Model
+Java is both compiled and interpreted:
+- Compiled: .java → bytecode (.class) using javac
+- Interpreted: Bytecode → machine code using JVM
+
+## JVM – Java Virtual Machine
+The JVM executes Java bytecode.
+
+Bytecode (.class)
+        ↓
+Interpreter
+        ↓
+Machine Code
+        ↓
+CPU Execution
+
+### Why Not Only Use a Compiler?
+Initially, JVM used an interpreter because:
+- Java already performs two conversions:
+    - Source → Bytecode
+    - Bytecode → Machine code
+- Adding full ahead-of-time compilation would increase startup time.
+- Java was designed to run programs quickly after loading.
+
+### Early Challenges (1990s)
+- Slow hardware
+- Limited RAM
+- Slow disk speeds
+Interpreting bytecode was easier on limited systems.
+
+### Modern JVM: Hybrid Model (Interpreter + JIT)
+Modern JVM uses:
+    - Interpreter for normal execution
+    - JIT (Just-In-Time) Compiler for frequently executed code
+
+### How It Works
+- Frequently used bytecode sections (hotspots) are detected.
+- JIT converts them into native machine code.
+- That machine code is reused directly.
+- Improves performance significantly.
+This makes Java both portable and fast.
+
+
+## JRE – Java Runtime Environment
+JRE is used to run Java programs.
+
+### JRE = JVM + Class Libraries
+It includes:
+    - JVM
+    - Core libraries (java.lang, java.io, java.util, etc.)
+    - Supporting files required for execution
+
+Class libraries provide:
+    - Console input/output
+    - File handling
+    - Collections
+    - Networking
+    - Utility classes
+If you only want to run Java programs (not develop), JRE is sufficient.
+
+
+## JDK – Java Development Kit
+JDK is used to develop Java applications.
+
+### JDK = JRE + Development Tools
+It includes:
+    - JRE
+    - Compiler (javac)
+    - Debugger
+    - Java documentation tool (javadoc)
+    - Other development utilities
+If you want to write and compile Java programs, you need JDK.
+
+## Execution Flow of a Java Program
+
+demo.java
+   ↓
+Compiler (JDK)
+   javac demo.java
+   ↓
+demo.class
+   ↓
+JRE
+   java demo
+   ↓
+JVM
+   ↓
+Machine Code
+   ↓
+CPU
+   ↓
+Output
+
+
+## Java Editions
+
+### JSE – Java Standard Edition
+Core Java platform.
+Used for:
+    - Desktop applications
+    - Core programming
+    - Basic libraries
+
+### JEE – Java Enterprise Edition (Now Jakarta EE)
+Used for:
+    - Enterprise applications
+    - Web applications
+    - Distributed systems
+    - Transactional systems
+Now maintained as: Jakarta EE
+
+### JME – Java Micro Edition
+Used for:
+    - Embedded systems
+    - Small devices
+    - Feature phones
+Mostly replaced in the mobile world by: Kotlin on Android.
