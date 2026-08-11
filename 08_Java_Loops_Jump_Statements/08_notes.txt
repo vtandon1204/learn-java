@@ -1,0 +1,218 @@
+ITERATION STATEMENTS IN JAVA
+============================
+
+Iteration statements are used to execute a block of code repeatedly.
+
+Types:
+1. while
+2. do-while
+3. for
+4. for-each
+
+
+1. WHILE LOOP
+=============
+
+Syntax:
+
+while (condition) {
+    // statements
+}
+
+- Condition is checked before execution.
+- May execute zero or more times.
+- Entry-controlled loop.
+- Useful when the number of iterations is not known beforehand.
+
+
+2. DO-WHILE LOOP
+================
+
+Syntax:
+
+do {
+    // statements
+} while (condition);
+
+- Loop body executes first.
+- Condition is checked after execution.
+- Always executes at least once.
+- Exit-controlled loop.
+- Commonly used for menu-driven programs and user input.
+
+
+3. FOR LOOP
+===========
+
+Syntax:
+
+for (initialization; condition; updation) {
+    // statements
+}
+
+Execution order:
+
+initialization → condition → body → updation → condition → ...
+
+- Initialization executes once.
+- Condition is checked before each iteration.
+- Updation executes after each iteration.
+- Commonly used for counter-based iteration.
+
+Multiple variables can be used:
+
+for (initialization1, initialization2; condition; updation1, updation2) {
+    // statements
+}
+
+
+4. FOR-EACH LOOP
+================
+
+Syntax:
+
+for (datatype variable : collection) {
+    // statements
+}
+
+- Used to traverse arrays and Iterable collections.
+- Processes elements one by one.
+- Does not directly provide the index.
+- For String characters, use toCharArray() first.
+
+
+TYPE PROMOTION INSIDE LOOPS
+===========================
+
+- Type promotion is not specific to loops.
+- During arithmetic operations, byte, short and char are generally
+  promoted to int.
+- Normal Java type promotion rules apply inside loops.
+
+
+NESTED LOOPS
+============
+
+Syntax:
+
+for (...) {
+    for (...) {
+        // statements
+    }
+}
+
+- A loop inside another loop is called a nested loop.
+- The inner loop completes all its iterations for every iteration
+  of the outer loop.
+- Commonly used for matrices, patterns and tables.
+
+
+JUMP STATEMENTS
+===============
+
+1. break
+--------
+
+Syntax:
+
+break;
+
+- Immediately terminates the nearest loop or switch.
+- Execution continues after the loop/switch.
+
+
+2. continue
+-----------
+
+Syntax:
+
+continue;
+
+- Skips the remaining statements of the current iteration.
+- Moves to the next iteration.
+
+
+3. return
+---------
+
+Syntax:
+
+return;
+return value;
+
+- Exits the current method.
+- Can optionally return a value.
+
+
+BREAK vs CONTINUE
+=================
+
+break    → Terminates the entire loop.
+continue → Skips only the current iteration.
+
+
+LABELS IN JAVA
+==============
+
+Syntax:
+
+label:
+    statement
+
+Example structure:
+
+outer:
+for (...) {
+    for (...) {
+        break outer;
+    }
+}
+
+- A label is an identifier followed by a colon (:).
+- Mainly used with nested loops.
+- Allows break or continue to target a specific outer loop/block.
+
+Labeled break:
+
+break label;
+
+Labeled continue:
+
+continue label;
+
+
+CODE BLOCKS
+===========
+
+Syntax:
+
+{
+    // statements
+}
+
+- A code block is a group of statements enclosed within { }.
+- Used with classes, methods, loops, conditions and standalone blocks.
+- Blocks define the scope of local variables.
+
+
+VARIABLE SCOPE
+==============
+
+- A variable declared inside a block is accessible only within that
+  block and its nested blocks.
+- Once execution leaves the block, the variable is out of scope.
+
+
+QUICK REVISION
+==============
+
+while      → condition first, may execute 0 times
+do-while   → body first, executes at least 1 time
+for        → counter-based iteration
+for-each   → traverse arrays/Iterable collections
+nested     → loop inside another loop
+break      → terminate loop
+continue   → skip current iteration
+return     → exit method
+label      → target a specific outer loop/block
+block      → group statements + define scope
