@@ -1,0 +1,51 @@
+# Type Conversion in Java
+
+### Data Types
+- Integers (byte, short, int, long)
+- Real (float, double)
+- Characters (char)
+- Booleans (boolean)
+
+1. Implicit type conversions: 
+    - Done automatically by Java
+    - Happens when converting smaller -> larger data type
+    - byte → short → int → long → float → double
+    - No data loss
+    - No casting required
+
+int num = 10;
+double result = num;  // int → double (automatic)
+System.out.println(result);  // Output: 10.0
+
+2. Explicit type conversions: 
+    - Done manually by programmer
+    - Happens when converting larger → smaller data type
+    - May cause data loss
+    - Requires casting using (type)
+
+double num = 10.75;
+int result = (int) num;  // double → int (manual casting)
+System.out.println(result);  // Output: 10
+
+3. Truncating type conversions:
+
+## Rules of Type Conversion
+- for Implicit conversions, the destination data type should be wider than source data type -> widening conversion
+
+
+## Automatic Type Promotions: happens when Java automatically converts smaller data types into larger ones during expressions (especially arithmetic operations)
+
+byte a = 10;
+byte b = 20;
+// byte result = a + b; ERROR
+int result = a + b;   // Correct
+
+byte a = 10;
+byte b = 20;
+byte c = (byte)(a + b);  // explicit cast needed
+
+### Rules of Type Promotions
+- byte, short and char values are promoted to int
+- if one operand is long, the whole expression becomes long
+- if one operand is float, the whole expression becomes double
+- if one operand is double, the whole expression becomes double
