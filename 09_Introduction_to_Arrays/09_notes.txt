@@ -1,0 +1,14 @@
+Introduction to Arrays -> collections of a datatype; contiguous memory location
+
+<datatype> [] <array_name>; // declaration
+
+<datatype> [] <array_name> = new <datatype> [<array_size]; // definition
+
+- 'new' is a keyword used to allocate memory in heap
+- length is a special property/field used to get the size/length of an array
+- 'index Out of Bound' exception: when trying to access an index which is out of length of array
+
+
+## Multi-Dimensional Arrays
+
+### 2-D Array
