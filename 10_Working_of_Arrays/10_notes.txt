@@ -1,0 +1,98 @@
+ARRAYS IN JAVA
+==============
+
+An array is a fixed-size, ordered collection of elements of the same type.
+
+datatype[] arrayName = new datatype[size];
+int[] arr = new int[5];
+
+
+MEMORY ALLOCATION
+=================
+
+- Reference variables are stored in the Stack.
+- Arrays are objects, so the array itself is stored in the Heap.
+- The reference variable stores a reference to the array object.
+
+Conceptually:
+Stack                      Heap
+-----                      ----
+arr  ------------------>  [0][0][0][0][0]
+
+
+RANDOM ACCESS IN ARRAYS
+=======================
+
+Arrays provide O(1) random access.
+
+Address of element:
+address(arr[i]) = base address + (index × element size)
+
+- base address = starting address of the array data.
+- Therefore, any element can be accessed directly without traversing
+  previous elements.
+
+Benefit:
+- Fast access to elements.
+- Good cache locality because array elements are stored contiguously.
+
+
+BOOLEAN ARRAY
+=============
+
+- Java does not specify a fixed memory size for boolean.
+- Its JVM-level representation is implementation-dependent.
+- Do not assume that a boolean always occupies exactly 1 byte.
+
+
+ARRAY INDEX OUT OF BOUNDS
+=========================
+
+Valid index range:
+0 <= index < arr.length
+
+Invalid index:
+index < 0 || index >= arr.length
+Accessing an invalid index throws: ArrayIndexOutOfBoundsException
+
+
+2D ARRAYS
+=========
+
+Java 2D arrays are actually arrays of arrays.
+
+Conceptually:
+2D array
+   |
+   +--> reference to row 0 → [ ][ ][ ]
+   |
+   +--> reference to row 1 → [ ][ ][ ]
+   |
+   +--> reference to row 2 → [ ][ ][ ]
+
+- The main array stores references to row arrays.
+- Each row is a separate array object.
+- Rows can have different lengths (jagged arrays).
+
+Access:
+arr[row][column]
+The first access finds the row reference, and the second access
+finds the element within that row.
+
+
+ARRAY OF STRINGS
+================
+
+A String array stores references to String objects.
+
+Conceptually:
+Stack/Array Reference
+        |
+        ↓
+[ref][ref][ref]
+   |    |    |
+   ↓    ↓    ↓
+ String String String
+
+- The array contains references, not the actual String objects.
+- String objects are stored separately in the Heap.
