@@ -1,0 +1,33 @@
+Java Functions
+block of code which is used further repeatedly
+
+static <return_type> <func_name> ( <parameters> ){
+    // function body
+    return <output>
+}
+
+## Types of Functions
+
+1. No input, No output
+2. input, No output
+3. No input, output
+4. input, output
+
+
+## Function Overloading -> same function name, same return type,different parameters, different number of parameters, different ordering of parameters
+
+## Chaining of Functions
+
+void main(){
+    A();
+}
+void A(){
+    B();
+}
+void B(){
+    // function body
+}
+
+## Scope of Variable
+
+## Recursion: a function whihc call itself with a base cas
