@@ -1,33 +1,170 @@
-Object Oriented Programming (OOP)
+OBJECT-ORIENTED PROGRAMMING (OOP)
+=================================
 
-problems:
-- need a lot of independent variables to represent one entity
-- if need to pass and entity to a function then need to pass all its variables
-- need to create a new set of variables for new entity
-- no authority of data
+OOP is a programming paradigm that organizes programs around objects,
+which combine data and the operations performed on that data.
 
 
-- Object: entity with some characteristics/identity (intrinsic properties); non-primitive data types; created in heap memory
-- Class: blueprint of an object
+PROBLEMS WITH PROCEDURAL APPROACH
+==================================
+
+When representing real-world entities using independent variables:
+
+- A large number of independent variables may be required to represent
+  one entity.
+- Passing an entity to a function requires passing all its variables
+  separately.
+- Creating another entity requires creating another set of variables.
+- There is no proper control or encapsulation of data.
+
+
+OBJECT
+======
+
+An object is an entity that has:
+
+- Identity
+- State/Properties (data)
+- Behaviour (methods)
+
+Example:
+A Student object can have:
+
+Properties:
+- name
+- age
+- rollNumber
+
+Behaviours:
+- study()
+- attendClass()
+
+In Java, objects are created dynamically in Heap memory.
+
+Objects are instances of classes.
+
+
+CLASS
+=====
+
+A class is a blueprint/template for creating objects.
+
+Syntax:
+
+class ClassName {
+    // variables → properties/state
+    // methods   → behaviour
+}
+
+
+Example:
+
+class Student {
+    String name;
+    int age;
+
+    void study() {
+        // behaviour
+    }
+}
+
+
+CREATING AN OBJECT
+==================
+
+Syntax:
+
+ClassName referenceVariable = new ClassName();
+
+Example:
 
 Student s1;
 s1 = new Student();
 
-- here, new keyword allocate the memory dynamically at run time
+OR
 
-- new block (unnamed) created in heap memory denoting the new object whose starting address is pointed by reference variable s1 stored in stack memory
+Student s1 = new Student();
 
 
-class <class_name> {
-    // variables -> properties/characteristics/data
-    // methods -> behaviours
-};
+MEMORY CONCEPT
+==============
 
-- compile time (static)
-- run time (dynamic)
+Student s1 = new Student();
 
-## Naming Convention
+- s1 is a reference variable.
+- The reference variable is stored in Stack memory.
+- new creates an object dynamically at runtime.
+- The object is allocated in Heap memory.
+- s1 stores a reference to that object.
 
-variables (primitive/reference): camelCase
-classes: start with capital letters
-functions: camelCase
+
+Conceptually:
+
+STACK                         HEAP
+-----                         ----
+
+s1  ---------------------->  Student Object
+                              ├── name
+                              ├── age
+                              └── methods/metadata
+
+
+NEW KEYWORD
+===========
+
+The new keyword:
+
+- Dynamically allocates memory for an object at runtime.
+- Creates an instance of a class.
+- Returns a reference to the newly created object.
+
+
+COMPILE TIME VS RUNTIME
+=======================
+
+Compile Time:
+- Source code is compiled.
+- Syntax and type-related checks are performed.
+- Class structure is processed.
+
+Runtime:
+- Program is executed.
+- Objects are created dynamically using new.
+- Memory is allocated as required.
+
+
+IMPORTANT TERMINOLOGY
+=====================
+
+Class:
+    Blueprint/template of an object.
+
+Object:
+    Instance of a class.
+
+Reference Variable:
+    Variable that holds a reference to an object.
+
+new:
+    Keyword used to dynamically create an object.
+
+
+NAMING CONVENTIONS
+==================
+
+Variables:
+- camelCase
+- Examples: studentName, rollNumber
+
+Reference Variables:
+- camelCase
+- Examples: student, studentObj
+
+Classes:
+- PascalCase
+- Start with a capital letter.
+- Examples: Student, EmployeeDetails
+
+Methods/Functions:
+- camelCase
+- Examples: calculateSalary(), getName()
