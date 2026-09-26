@@ -1,33 +1,156 @@
-Java Functions
-block of code which is used further repeatedly
+JAVA FUNCTIONS / METHODS
+========================
 
-static <return_type> <func_name> ( <parameters> ){
+A function (called a method in Java) is a block of code designed to
+perform a specific task and can be called repeatedly.
+
+Syntax:
+
+static <return_type> <function_name>(<parameters>) {
     // function body
-    return <output>
+    return <value>;
 }
 
-## Types of Functions
+Example structure:
 
-1. No input, No output
-2. input, No output
-3. No input, output
-4. input, output
-
-
-## Function Overloading -> same function name, same return type,different parameters, different number of parameters, different ordering of parameters
-
-## Chaining of Functions
-
-void main(){
-    A();
-}
-void A(){
-    B();
-}
-void B(){
-    // function body
+static int add(int a, int b) {
+    return a + b;
 }
 
-## Scope of Variable
 
-## Recursion: a function whihc call itself with a base cas
+TYPES OF FUNCTIONS
+==================
+
+Based on input and output:
+
+1. No Input, No Output
+   - Takes no parameters.
+   - Returns void.
+
+2. Input, No Output
+   - Takes parameters.
+   - Returns void.
+
+3. No Input, Output
+   - Takes no parameters.
+   - Returns a value.
+
+4. Input, Output
+   - Takes parameters.
+   - Returns a value.
+
+
+FUNCTION OVERLOADING
+====================
+
+Function overloading means defining multiple methods with the same name
+but different parameter lists.
+
+Parameters can differ by:
+
+- Number of parameters
+- Type of parameters
+- Order of parameters
+
+Example:
+
+add(int, int)
+add(int, int, int)
+add(double, double)
+add(int, double)
+
+Important:
+- Return type alone cannot be used for method overloading.
+- Methods must have different parameter lists.
+
+
+FUNCTION CHAINING / METHOD CALLING
+===================================
+
+A method can call another method, creating a chain of method calls.
+
+Flow:
+
+main()
+  ↓
+A()
+  ↓
+B()
+  ↓
+Method body
+
+The called method executes first, then control returns to the caller.
+
+
+SCOPE OF VARIABLES
+==================
+
+Scope defines where a variable can be accessed.
+
+Types:
+
+1. Local Variable
+   - Declared inside a method or block.
+   - Accessible only within that method/block.
+
+2. Parameter
+   - Declared in the method parameter list.
+   - Accessible throughout that method.
+
+3. Instance Variable
+   - Declared inside a class but outside methods.
+   - Belongs to an object.
+
+4. Static/Class Variable
+   - Declared using static.
+   - Belongs to the class rather than an individual object.
+
+
+RECURSION
+=========
+
+Recursion is a technique where a method calls itself.
+
+A recursive method must have:
+
+1. Base Case
+   - Condition that stops recursion.
+
+2. Recursive Case
+   - Method calls itself with a smaller/simpler input.
+
+Basic structure:
+
+method() {
+    if (baseCondition) {
+        return;
+    }
+
+    method();
+}
+
+Without a proper base case, recursion can continue indefinitely and
+eventually cause StackOverflowError.
+
+
+FUNCTION vs METHOD
+==================
+
+In Java, functions defined inside a class are called methods.
+
+Therefore, the commonly used term in Java is "method" rather than
+"function."
+
+
+STATIC METHOD
+=============
+
+A static method belongs to the class rather than an individual object.
+
+Syntax:
+
+static returnType methodName(parameters) {
+    // body
+}
+
+It can be called using the class name without creating an object.
