@@ -1,0 +1,33 @@
+Object Oriented Programming (OOP)
+
+problems:
+- need a lot of independent variables to represent one entity
+- if need to pass and entity to a function then need to pass all its variables
+- need to create a new set of variables for new entity
+- no authority of data
+
+
+- Object: entity with some characteristics/identity (intrinsic properties); non-primitive data types; created in heap memory
+- Class: blueprint of an object
+
+Student s1;
+s1 = new Student();
+
+- here, new keyword allocate the memory dynamically at run time
+
+- new block (unnamed) created in heap memory denoting the new object whose starting address is pointed by reference variable s1 stored in stack memory
+
+
+class <class_name> {
+    // variables -> properties/characteristics/data
+    // methods -> behaviours
+};
+
+- compile time (static)
+- run time (dynamic)
+
+## Naming Convention
+
+variables (primitive/reference): camelCase
+classes: start with capital letters
+functions: camelCase
