@@ -1,0 +1,193 @@
+INSTANCE VARIABLES, CONSTRUCTORS & THIS KEYWORD
+================================================
+
+
+INSTANCE VARIABLES
+==================
+
+- Instance variables are variables declared inside a class but outside
+  methods, constructors, or blocks.
+- They belong to an object.
+- They are stored as part of the object in Heap memory.
+- They automatically receive default values if not explicitly initialized.
+
+Default values:
+
+int       → 0
+float     → 0.0f
+double    → 0.0d
+boolean   → false
+char      → '\u0000'
+reference → null
+
+
+STRING AS A REFERENCE TYPE
+==========================
+
+- String is a class, not a primitive data type.
+- A String variable is a reference variable that refers to a String object.
+- If an instance variable of type String is not initialized, its default
+  value is null.
+
+Example concept:
+
+String college;
+
+Here, college is a reference variable with the default value null.
+
+
+LOCAL VARIABLES
+===============
+
+- Local variables are declared inside methods, constructors, or blocks.
+- They are associated with the method/block execution.
+- Local variables do NOT receive default values automatically.
+- They must be explicitly initialized before use.
+
+Example:
+
+void main() {
+    int x;
+    // System.out.println(x);  // Compilation error
+}
+
+Important:
+The reason is not simply that local variables are stored in Stack while
+instance variables are stored in Heap.
+
+The actual rule is:
+- Instance variables receive default initialization as part of object
+  initialization.
+- Local variables must be definitely assigned before they are read.
+
+
+CONSTRUCTOR
+===========
+
+A constructor is a special member of a class used to initialize an object
+when it is created.
+
+Syntax:
+
+ClassName() {
+    // initialization
+}
+
+
+RULES OF CONSTRUCTORS
+=====================
+
+1. Constructor name must be the same as the class name.
+
+2. A constructor does not have a return type.
+   - Not even void.
+
+3. It is automatically invoked when an object is created using new.
+
+4. It is primarily used to initialize an object's state.
+
+5. Constructors can be overloaded.
+
+
+DEFAULT CONSTRUCTOR
+===================
+
+- If no constructor is explicitly written by the programmer, Java
+  automatically provides a default constructor.
+- It has no parameters.
+- It initializes instance variables with their default values.
+
+Important:
+If the programmer defines any constructor, Java does not automatically
+provide the default constructor.
+
+
+CONSTRUCTOR OVERLOADING
+=======================
+
+A class can have multiple constructors with different parameter lists.
+
+This allows objects to be initialized in different ways.
+
+Example structure:
+
+Student()
+Student(String name)
+Student(String name, int age)
+
+Each constructor has the same name as the class but a different
+parameter list.
+
+
+THIS KEYWORD
+============
+
+- this refers to the current object.
+- It stores/references the current object within an instance method or
+  constructor.
+- Commonly used to distinguish instance variables from parameters.
+
+Example concept:
+
+this.name = name;
+
+Here:
+- this.name → instance variable
+- name → parameter
+
+
+CONSTRUCTOR CHAINING
+====================
+
+Constructor chaining means calling one constructor from another
+constructor.
+
+The this() keyword is used for constructor chaining within the same class.
+
+Syntax:
+
+this();
+
+or
+
+this(arguments);
+
+
+Important:
+- this() must be the first statement inside a constructor.
+- It calls another constructor of the same class.
+
+
+CONSTRUCTOR INVOCATION
+======================
+
+Constructors are invoked automatically when an object is created.
+
+Example concept:
+
+Student s1 = new Student();
+
+The constructor is automatically called as part of object creation.
+
+A constructor cannot be called like a normal method.
+
+Constructor chaining is an exception in the sense that one constructor
+can invoke another using this().
+
+
+RUNTIME EXCEPTION: OUT OF MEMORY
+================================
+
+If the JVM cannot allocate enough memory for a new object, it may throw:
+
+OutOfMemoryError
+
+Example situation:
+
+- Heap memory is insufficient.
+- JVM cannot allocate memory for a new object.
+
+Important:
+OutOfMemoryError is an Error, not a RuntimeException.
+
+RuntimeException and Error are different categories of Throwable.
