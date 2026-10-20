@@ -1,0 +1,191 @@
+OBJECTS DEEP DIVE IN JAVA
+=========================
+
+
+1. OBJECT SIZE
+==============
+
+An object's memory consumption consists of three main components:
+
+1. Object Header
+   - Stores metadata about the object.
+   - Includes Mark Word and Class Pointer.
+   - Mark Word contains information related to locking, identity hash code
+     and garbage collection age.
+   - Class Pointer identifies the object's class metadata.
+
+2. Instance Fields
+   - Memory required to store instance variables.
+   - Depends on their data types and JVM implementation.
+
+3. Padding
+   - Extra bytes added to satisfy memory alignment requirements.
+   - Object sizes are commonly aligned to multiples of 8 bytes on
+     typical JVM configurations.
+
+Object Size = Header + Instance Fields + Padding
+
+Typical object header estimates:
+- Mark Word: commonly 8 bytes on a 64-bit JVM.
+- Class Pointer: commonly 4 bytes with compressed class pointers or
+  8 bytes without compression.
+
+Note:
+Exact object size depends on the JVM, architecture, JVM options and
+object layout. These values are not universal.
+
+
+2. CALL BY VALUE
+================
+
+Call by value means a copy of the argument's value is passed to a method.
+
+For primitive variables:
+- The actual value is copied.
+- Changes to the parameter do not affect the original variable.
+
+Example concept:
+
+int x = 4;
+addTen(x);
+
+The method receives a copy of x. Modifying the parameter does not
+modify the original x.
+
+Conclusion:
+Java is always call by value.
+
+
+3. OBJECT REFERENCES IN JAVA
+============================
+
+When an object is passed to a method:
+- The value of the reference is copied.
+- The copied reference points to the same object.
+- Both references can access and modify that object's fields.
+- Reassigning the copied reference does not change the caller's reference.
+
+Important:
+Java does NOT support call by reference.
+
+Example concept:
+
+Random r1 = new Random(4, 5);
+addTen(r1);
+
+Inside addTen(Random r):
+- r receives a copy of the reference stored in r1.
+- Both r and r1 refer to the same object.
+- Changes to the object's fields are visible through both references.
+
+
+4. DEEP COPY AND SHALLOW COPY
+=============================
+
+SHALLOW COPY
+------------
+
+A shallow copy creates another reference to the same object when using
+simple reference assignment.
+
+Example:
+
+Random r1 = new Random(4, 5);
+Random r3 = r1;
+
+Here:
+- r1 and r3 refer to the same object.
+- No new Random object is created.
+- Changes through either reference affect the same object.
+
+Conceptually:
+
+r1 ──────┐
+         ├────> Object { x = 4, y = 5 }
+r3 ──────┘
+
+
+DEEP COPY / INDEPENDENT COPY
+----------------------------
+
+A copy constructor can create a new object and copy the field values.
+
+Example:
+
+Random r1 = new Random(4, 5);
+Random r2 = new Random(r1);
+
+Here:
+- r1 and r2 refer to different objects.
+- Both initially contain x = 4 and y = 5.
+- Modifying one object's fields does not modify the other object's fields.
+
+Conceptually:
+
+r1 ─────────> Object 1 { x = 4, y = 5 }
+
+r2 ─────────> Object 2 { x = 4, y = 5 }
+
+Important:
+The copy constructor in this example creates an independent copy because
+the fields are primitives. For objects containing reference fields,
+copying those references alone is a shallow copy; a true deep copy must
+also copy the referenced objects as needed.
+
+
+5. COPY CONSTRUCTOR
+===================
+
+A copy constructor accepts an object of the same class and uses it to
+initialize a new object.
+
+Syntax:
+
+ClassName(ClassName obj) {
+    this.field1 = obj.field1;
+    this.field2 = obj.field2;
+}
+
+Purpose:
+- Creates a new object using an existing object's data.
+- Can be used to create an independent copy.
+
+
+6. THIS KEYWORD
+===============
+
+The this keyword refers to the current object.
+
+Example:
+
+Random(int x, int y) {
+    this.x = x;
+    this.y = y;
+}
+
+Here:
+- this.x refers to the instance variable.
+- x refers to the constructor parameter.
+- this.y refers to the instance variable.
+- y refers to the constructor parameter.
+
+
+7. KEY DIFFERENCES
+==================
+
+Primitive argument:
+- A copy of the primitive value is passed.
+- Changes to the parameter do not affect the original variable.
+
+Object argument:
+- A copy of the reference value is passed.
+- Both references can access the same object.
+- Object field modifications are visible through both references.
+
+Shallow copy:
+- References the same object when using direct assignment.
+- No new object is created.
+
+Independent object copy:
+- Creates a new object with copied field values.
+- Changes to primitive fields remain independent.
